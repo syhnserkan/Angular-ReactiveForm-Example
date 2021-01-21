@@ -52,17 +52,19 @@ export class AppComponent implements OnInit {
       console.log(this.registerForm);
     }
   }
-
-  //getter method to access formcontrols
-  // get myForm() {
-  //   return this.registerForm.controls;
-  // }
+  
+  /* getter method to access formcontrols
+  get myForm() {
+    return this.registerForm.controls;
+  }
+  Not: I couldn't access controls in html that's why I didn't use this way.
+  */
 
   get dynamicArray() {
     return this.registerForm.get('addDynamicElement') as FormArray;
   }
 
-  addSuperPower() {
+  addFamilyMembers() {
     this.dynamicArray.push(this.fb.control(''));
   }
 }

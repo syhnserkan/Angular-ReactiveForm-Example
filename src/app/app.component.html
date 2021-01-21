@@ -282,14 +282,14 @@
 
           <!-- Add Super Powers Dynamically -->
           <div class="group-gap" formArrayName="addDynamicElement">
-            <h5 class="mb-3">Add Super Powers</h5>
+            <h5 class="mb-3">Add Family Members</h5>
             <div class="mb-3">
               <button
                 type="button"
                 class="btn btn-sm btn-success mb-3 btn-block"
-                (click)="addSuperPower()"
+                (click)="addFamilyMembers()"
               >
-                Add Powers
+                Add Family Member
               </button>
               <div class="subjectList">
                 <li *ngFor="let item of dynamicArray.controls; let i = index">
@@ -302,7 +302,7 @@
               </div>
             </div>
             <button type="submit" class="btn btn-danger btn-lg btn-block">
-              Create Superhero
+              Sign Up
             </button>
           </div>
 

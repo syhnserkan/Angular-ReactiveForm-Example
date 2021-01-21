@@ -68,8 +68,8 @@ label {
 .btn-success:hover {
   color: #fff;
   font-weight: bold;
-  border-color: #00fc79;
-  background-color: #00fc79;
+  border-color:#312bc6;
+  background-color:#312bc6;
 }
 
 .btn-group-lg > .btn,
