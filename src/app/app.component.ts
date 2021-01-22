@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormArray,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { ValidatePassword } from './match-password/validate-password';
 
 @Component({
@@ -11,6 +17,8 @@ export class AppComponent implements OnInit {
   cities = ['İstanbul', 'İzmir', 'Ankara', 'Aydın', 'Bursa', 'Mersin'];
   registerForm: FormGroup;
   submitted = false;
+  formControl: { [key: string]: AbstractControl };
+  alerText = '';
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
@@ -45,14 +53,17 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true;
     if (!this.registerForm.valid) {
-      alert('Please fill all the blanks to register.');
+      // console.log('Please fill all the blanks to register');
+      this.alerText = 'Please fill all the blanks to register';
+      this.formControl = null;
     } else {
-      this.submitted = true;
-      console.log(this.registerForm);
+      this.formControl = this.registerForm.value;
+      // console.log(this.registerForm);
     }
   }
-  
+
   /* getter method to access formcontrols
   get myForm() {
     return this.registerForm.controls;

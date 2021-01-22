@@ -13,16 +13,32 @@
           <!-- Full Name -->
           <div formGroupName="fullName">
             <div class="mb-3">
-              <label for="name">First name</label>
+              <label
+                [ngClass]="{
+                  error:
+                    (submitted &&
+                      !registerForm.get('fullName.firstName').valid) ||
+                    (!registerForm.get('fullName.firstName').valid &&
+                      registerForm.get('fullName.firstName').touched)
+                }"
+                for="name"
+                >First name</label
+              >
               <input
                 formControlName="firstName"
                 type="text"
                 class="form-control"
+                [ngClass]="{
+                  error:
+                    submitted && !registerForm.get('fullName.firstName').valid
+                }"
               />
               <div
                 *ngIf="
-                  !registerForm.get('fullName.firstName').valid &&
-                  registerForm.get('fullName.firstName').touched
+                  (submitted &&
+                    !registerForm.get('fullName.firstName').valid) ||
+                  (!registerForm.get('fullName.firstName').valid &&
+                    registerForm.get('fullName.firstName').touched)
                 "
                 class="help-block"
               >
@@ -45,16 +61,31 @@
               </div>
             </div>
             <div class="mb-3">
-              <label for="surname">Last name</label>
+              <label
+                for="surname"
+                [ngClass]="{
+                  error:
+                    (submitted &&
+                      !registerForm.get('fullName.lastName').valid) ||
+                    (!registerForm.get('fullName.lastName').valid &&
+                      registerForm.get('fullName.lastName').touched)
+                }"
+                >Last name</label
+              >
               <input
                 formControlName="lastName"
                 type="text"
                 class="form-control"
+                [ngClass]="{
+                  error:
+                    submitted && !registerForm.get('fullName.lastName').valid
+                }"
               />
               <div
                 *ngIf="
-                  !registerForm.get('fullName.lastName').valid &&
-                  registerForm.get('fullName.lastName').touched
+                  (submitted && !registerForm.get('fullName.lastName').valid) ||
+                  (!registerForm.get('fullName.lastName').valid &&
+                    registerForm.get('fullName.lastName').touched)
                 "
                 class="help-block"
               >
@@ -80,12 +111,30 @@
 
           <!-- Email -->
           <div class="mb-3">
-            <label for="email"> Email </label>
-            <input formControlName="email" type="email" class="form-control" />
+            <label
+              for="email"
+              [ngClass]="{
+                error:
+                  (submitted && !registerForm.get('email').valid) ||
+                  (!registerForm.get('email').valid &&
+                    registerForm.get('email').touched)
+              }"
+            >
+              Email
+            </label>
+            <input
+              formControlName="email"
+              type="email"
+              class="form-control"
+              [ngClass]="{
+                error: submitted && !registerForm.get('email').valid
+              }"
+            />
             <div
               *ngIf="
-                !registerForm.get('email').valid &&
-                registerForm.get('email').touched
+                (submitted && !registerForm.get('email').valid) ||
+                (!registerForm.get('email').valid &&
+                  registerForm.get('email').touched)
               "
               class="help-block"
             >
@@ -106,16 +155,30 @@
 
           <!-- Phone number -->
           <div class="mb-3">
-            <label for="phone"> Phone Number </label>
+            <label
+              for="phone"
+              [ngClass]="{
+                error:
+                  (submitted && !registerForm.get('phoneNumber').valid) ||
+                  (!registerForm.get('phoneNumber').valid &&
+                    registerForm.get('phoneNumber').touched)
+              }"
+            >
+              Phone Number
+            </label>
             <input
               formControlName="phoneNumber"
               type="text"
               class="form-control"
+              [ngClass]="{
+                error: submitted && !registerForm.get('phoneNumber').valid
+              }"
             />
             <div
               *ngIf="
-                !registerForm.get('phoneNumber').valid &&
-                registerForm.get('phoneNumber').touched
+                (submitted && !registerForm.get('phoneNumber').valid) ||
+                (!registerForm.get('phoneNumber').valid &&
+                  registerForm.get('phoneNumber').touched)
               "
               class="help-block"
             >
@@ -145,17 +208,30 @@
             <h4 class="mb-3">Address</h4>
             <!-- Street -->
             <div class="mb-3">
-              <label for="street">Street</label>
+              <label
+                for="street"
+                [ngClass]="{
+                  error:
+                    (submitted && !registerForm.get('address.street').valid) ||
+                    (!registerForm.get('address.street').valid &&
+                      registerForm.get('address.street').touched)
+                }"
+                >Street</label
+              >
               <input
                 formControlName="street"
                 type="text"
                 class="form-control"
+                [ngClass]="{
+                  error: submitted && !registerForm.get('address.street').valid
+                }"
               />
               <!-- Validation -->
               <div
                 *ngIf="
-                  !registerForm.get('address.street').valid &&
-                  registerForm.get('address.street').touched
+                  (submitted && !registerForm.get('address.street').valid) ||
+                  (!registerForm.get('address.street').valid &&
+                    registerForm.get('address.street').touched)
                 "
                 class="help-block"
               >
@@ -169,9 +245,24 @@
             </div>
             <!-- City -->
             <div class="mb-3">
-              <label for="state">City</label>
-              <select formControlName="city" class="custom-select d-block">
-                <option value="">Choose</option>
+              <label
+                for="state"
+                [ngClass]="{
+                  error:
+                    (submitted && !registerForm.get('address.city').valid) ||
+                    (!registerForm.get('address.city').valid &&
+                      registerForm.get('address.city').touched)
+                }"
+                >City</label
+              >
+              <select
+                formControlName="city"
+                class="custom-select d-block"
+                [ngClass]="{
+                  error: submitted && !registerForm.get('address.city').valid
+                }"
+              >
+                <!-- <option value="">Choose</option> -->
                 <option *ngFor="let city of cities" [value]="city">
                   {{ city }}
                 </option>
@@ -179,8 +270,9 @@
               <!-- Validation -->
               <div
                 *ngIf="
-                  !registerForm.get('address.city').valid &&
-                  registerForm.get('address.city').touched
+                  (submitted && !registerForm.get('address.city').valid) ||
+                  (!registerForm.get('address.city').valid &&
+                    registerForm.get('address.city').touched)
                 "
                 class="help-block"
               >
@@ -227,16 +319,33 @@
           <!-- Password -->
           <div class="group-gap" formGroupName="passwordValidation">
             <div class="mb-3">
-              <label for="password">Password</label>
+              <label
+                for="password"
+                [ngClass]="{
+                  error:
+                    (submitted &&
+                      !registerForm.get('passwordValidation.password').valid) ||
+                    (!registerForm.get('passwordValidation.password').valid &&
+                      registerForm.get('passwordValidation.password').touched)
+                }"
+                >Password</label
+              >
               <input
                 formControlName="password"
                 type="password"
                 class="form-control"
+                [ngClass]="{
+                  error:
+                    submitted &&
+                    !registerForm.get('passwordValidation.password').valid
+                }"
               />
               <div
                 *ngIf="
-                  !registerForm.get('passwordValidation.password').valid &&
-                  registerForm.get('passwordValidation.password').touched
+                  (submitted &&
+                    !registerForm.get('passwordValidation.password').valid) ||
+                  (!registerForm.get('passwordValidation.password').valid &&
+                    registerForm.get('passwordValidation.password').touched)
                 "
                 class="help-block"
               >
@@ -253,17 +362,40 @@
               </div>
             </div>
             <div class="mb-3">
-              <label for="password">Confirm Password</label>
+              <label
+                for="password"
+                [ngClass]="{
+                  error:
+                    (submitted &&
+                      !registerForm.get('passwordValidation.confirmPassword')
+                        .valid) ||
+                    (!registerForm.get('passwordValidation.confirmPassword')
+                      .valid &&
+                      registerForm.get('passwordValidation.confirmPassword')
+                        .touched)
+                }"
+                >Confirm Password</label
+              >
               <input
                 formControlName="confirmPassword"
                 type="password"
                 class="form-control"
+                [ngClass]="{
+                  error:
+                    submitted &&
+                    !registerForm.get('passwordValidation.confirmPassword')
+                      .valid
+                }"
               />
               <div
                 *ngIf="
-                  !registerForm.get('passwordValidation.confirmPassword')
+                  (submitted &&
+                    !registerForm.get('passwordValidation.confirmPassword')
+                      .valid) ||
+                  (!registerForm.get('passwordValidation.confirmPassword')
                     .valid &&
-                  registerForm.get('passwordValidation.confirmPassword').touched
+                    registerForm.get('passwordValidation.confirmPassword')
+                      .touched)
                 "
                 class="help-block"
               >
@@ -307,8 +439,16 @@
           </div>
 
           <!-- Result -->
-          <div class="group-gap" *ngIf="submitted">
-            {{ registerForm.value | json }}
+          <div *ngIf="submitted">
+            <div
+              class="group-gap"
+              *ngIf="submitted && !!formControl; else elseBlock"
+            >
+              {{ formControl | json }}
+            </div>
+            <ng-template #elseBlock>
+              Please fill all the blanks to register</ng-template
+            >
           </div>
         </div>
       </form>
